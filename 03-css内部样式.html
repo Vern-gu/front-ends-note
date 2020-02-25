@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            css层叠样式表的使用(内部样式)
+        </title>
+        <!--写在<style>标签内部的样式，就是css内部样式-->
+        <!--行内样式优先级高于内部样式-->
+        <!--行内样式 > id > class > 标签 > *通用选择器 -->
+        <!--选择器选择的范围越小越精确，优先级就越高-->>
+        <style>
+            body {
+                margin: 0px;
+            }
+            #poem {
+                color: #555; width: 500px; margin: auto;
+            }
+            #seconde_part {
+                height: auto;
+            }
+            #third_part {
+                height: 80px; text-align: center; line-height: 80px; background-color: darkgray;
+            }
+            .b {
+                color: darkgoldenrod;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div id="poem">
+            <p style="text-align: center;">
+                <span style="color: white; font-size: 24px; background-color: grey ;">卖油翁</span>
+            </p>
+            <p style="text-align: center; color: slategrey; font-size: small;">【作者】欧阳修 【朝代】宋</p>
+            <p><span class="b">陈康肃公<b>善射</b>，当世无双 ，公亦以此自矜。</span>尝射于家圃，有卖油翁释担而立，睨之久而不去。见其发矢十中八九，但微颔之。</p>
+            <p>康肃问曰：”<span class="b">汝亦<b>知射</b>乎？吾射不亦<b>精</b>乎？</span>”翁曰：”无他， 但手熟尔。”康肃忿然曰：”尔安敢轻吾射！”翁曰：”以我酌油知之。”乃取一葫芦置于地，以钱覆其口，徐以杓酌油沥之，自钱孔入，而钱不湿。因曰：”我亦无他，惟手熟尔。”康肃笑而遣之。</p>
+            <P>此与庄生所谓解牛斫轮者何异？</p>
+        </div>
+        <div id="second_part">
+            <img src="./html基本格式.png" width="100%">
+        </div>
+        <div id="third_part">
+            <b>CopyRight 2020</b>
+        </div>
+    </body>
+</html>

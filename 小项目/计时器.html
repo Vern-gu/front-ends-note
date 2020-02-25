@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计时器</title>
+    <style>
+        #screen{
+            font-size: 50px; height: 80px; text-align: center; line-height: 80px;
+        }
+        #btn{
+            text-align: center;
+        }
+    </style>
+    <script>
+        var getid = function(id){
+            return document.getElementById(id);
+        }
+        var count=0, hour=0, minute=0, second=0;
+        function counter(){
+            count++;
+            second = count % 60;
+            minute = Math.floor(count/60);
+            hour = Math.floor(count/3600);
+            if(second<10){
+                second = "0"+second;
+            }
+            if(minute<10){
+                minute = "0"+minute;
+            }
+            if(hour<10){
+                hour = "0"+hour;
+            }
+            getid("screen").innerHTML = hour+":"+minute+":"+second;
+        }
+        var countID  = null
+        window.onload = function(){
+            getid("start").onclick = function(){
+                countID = setInterval(counter,1000);
+            }
+            getid("pause").onclick = function(){
+                clearInterval(countID);
+            }
+            getid("reset").onclick = function(){
+                clearInterval(countID);
+                count = 0;
+                getid("screen").innerHTML = "00:00:00";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="screen">
+        00:00:00
+    </div>
+    <div id="btn">
+        <input type="button" value="Start" id="start">
+        <input type="button" value="Pause" id="pause">
+        <input type="button" value="Reset" id="reset">
+    </div>
+</body>
+</html>

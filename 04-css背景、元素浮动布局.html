@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%; margin: 0px;/*margin为外边距，很多元素天生带边距，但其实我们都用不到*/
+        }
+        body{
+            background-image: url(css选择器权重值.png);
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
+
+
+        p {
+            font-weight: bold;
+        }
+        .green{
+            width: 100px; height: 100px; background-color: green;
+            float: left;
+        }
+        .red{
+            width: 200px; height: 150px; background-color: red;
+        }
+        #box{
+            width: 970px; margin: auto; text-align: center;
+        }
+        .a{
+            width: 180px; background-color: black;
+        }
+        .b{
+            width: 660px; background-color: silver;
+        }
+        .c{
+            width: 100px; background-color: gray;
+        }
+        .a,.b,.c{
+            height: 200px; float: left; margin: 2px;
+        }
+        .block{
+            height: 360px; background: red; margin: 2px; width: 948px;
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+    <!--容器一般是纵向排列的。但通过元素的浮动，可以使多个容器横向排列（甚至文字环绕效果）-->
+    <p>文字环绕</p>
+    <div class="green"></div>
+    <div class="red">
+        文字环绕效果文字环绕效果文字环绕效果文字环绕效果文字环绕效果文字环绕效果文字环绕效果文字环绕效果文字环绕效果
+    </div>
+
+    <div id="box">
+        <p>横纵向排版布局</p>
+        <div class="a"></div>
+        <div class="b"></div>
+        <div class="c"></div>
+        <!--abc三个div都设置为浮动后下方block未设置浮动是会被abc所覆盖的-->
+        <!--当要消除覆盖的影响时，可以为block块添加clear样式-->
+        <div class="block"></div>
+    </div>
+
+</body>
+</html>

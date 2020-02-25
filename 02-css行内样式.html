@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            css层叠样式表的使用（style属性）
+        </title>
+    </head>
+    <body style="margin: 0px;">
+        <!--div，一个通用容器标签，不具备任何特殊功能，仅当作容器来使用。可以包裹任何内容，也可以容器直接互相包裹-->
+        <div id="poem" style="color: #555; width: 500px; margin: auto;">
+            <p style="text-align: center;">
+                <!--span，一个容器标签，不具备任何特殊功能，进当作容器来使用。用于包裹一个文本，便于给文本增加样式-->
+                <span style="color: white; font-size: 24px; background-color: grey ;">卖油翁</span>
+            </p>
+            <p style="text-align: center; color: slategrey; font-size: small;">【作者】欧阳修 【朝代】宋</p>
+            <p><span style="color: darkgoldenrod;">陈康肃公<b>善射</b>，当世无双 ，公亦以此自矜。</span>尝射于家圃，有卖油翁释担而立，睨之久而不去。见其发矢十中八九，但微颔之。</p>
+            <p>康肃问曰：”<span style="color: darkgoldenrod;">汝亦<b>知射</b>乎？吾射不亦<b>精</b>乎？</span>”翁曰：”无他， 但手熟尔。”康肃忿然曰：”尔安敢轻吾射！”翁曰：”以我酌油知之。”乃取一葫芦置于地，以钱覆其口，徐以杓酌油沥之，自钱孔入，而钱不湿。因曰：”我亦无他，惟手熟尔。”康肃笑而遣之。</p>
+            <P>此与庄生所谓解牛斫轮者何异？</p>
+        </div>
+        <!--一个空的div，默认宽度100%，高度为0,id属性的值不允许重复-->
+        <div id="second_part" style="height: auto;">
+            <img src="./html基本格式.png" width="100%">
+        </div>
+        <div id="third_part" style="height: 80px; line-height: 80px; background-color: darkgray;">
+            <center><b>CopyRight 2020</b></center>
+        </div>
+        <!--像这种在标签内部的style属性叫做行内样式，会使得html文本变得非常冗长难以阅读-->
+        <!--因此就可以将这些style属性提取出来，写在<style>标签内部，那就是css内部样式-->
+    </body>
+</html>

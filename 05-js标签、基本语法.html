@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js基本语法</title>
+    <script type="text/javascript">
+        /*
+        js同python一样是弱类型语言
+        所有的js代码都必须写在script标签中
+        为了语法规范，script标签写在head标签中
+        可以引入多个script标签，多个标签之间顺序执行
+        js代码可以通过src属性外部引入，但script标签中已经外部引用了就不能在该标签中继续写代码了
+        js严格模式："use strict"处于哪个作用域，该作用域会对js语法更加严格，不建议用于全局
+        */
+        alert("hello world"); //在页面上弹出警告框，在js中每一条语句后加分号更加规范
+        document.write("hello world"); //在当前文本上输出内容
+    </script>
+    <script>
+        /*
+        js中数据类型分为两大类：
+            1.基本数据类型
+                数字 Number 
+                字符串 String  不可变类型
+                    获取字符串中的某个字符：str.charAt(index)/str[index]
+                    获取字符串中某个字符对应的ASCII码：str.charCodeAt(index)
+                    ASCII转换为字符：String.formCharCode(ascii码)
+                    拼接字符串：str1.concat(str2)/str1+str2  返回拼接后的字符串
+                    查找字符位置（数组可用）：str.indexOf(str,start) 返回查找到的下标，否则返回-1
+                    查找字符在字符串中最后一次出现的位置：str.lastIndexOf(str)  
+                    正则匹配：str.search(正则) 返回匹配的下标索引
+                    字符替换：str.replace(old_str/正则,new_str) 返回新字符串
+                    字符串切片：str.substring(start,end) 返回子串，左闭右开
+                    字符串分割：str.split(str,[len]) 返回数组
+                    字符串=>数组split；数组=>字符串join
+                    字符串全大写：str.toUpperCase()/ 全小写：str.toLowerCase()
+                布尔值 Boolean
+                特殊数据类型 null空 undefined未声明
+            2.复合数据类型
+                数组 Array()   可变类型
+                    使用new来创建，或者直接用[]创建同python
+                    数组末尾添加元素：arr.push(obj) 返回值为添加完元素后数组的长度
+                    移除数组最末尾的元素：arr.pop() 返回值为移除的元素
+                    移除数组中第一格元素：arr.shift() 返回值为溢移除的元素
+                    数组头部添加元素：arr.unshift(obj) 返回值为添加完元素后数组的长度
+                    合并两个数组：arr1.concat(arr2) 返回合并后的新数组，原数组不会被改变
+                    数组切片：arr.slice(start,end) 返回切片后的新数组，左闭右开
+                    数组中删除/插入元素：arr.splice(start,del_length,[obj]) 返回移除的元素
+                    字符串拼接：arr.join(拼接符) 返回拼接后的字符串 ，join()方法只能用于数组
+                    数组的排序：arr.reverse() 由大到小排序  arr.sort() 从小到大排序 ，但这两种方法默认都是按照字符串大小进行排序
+                    数组遍历：arr.forEach(function(item,index,[array]){代码串}) item为当前遍历到的元素，index为当前遍历到的下标，array为当前遍历到的数组
+                    map映射：arr.map(function(item,index,[array]){代码串}) 将arr中每一个元素依次传入到函数中进行运算
+                    reduce归并：arr.reduce(function(pre,next,index,[array]){代码串}) pre:前一次return的值，next:当前遍历到的元素
+                    filter过滤：arr.filter(function(item,index,[array]){代码串}) 根据条件找出符合的元素
+                    some：arr.some(function(item,index,[array]){代码串}) 依次查找数组中元素是否符合条件，只要有符合就返回true、
+                    every：arr.some(function(item,index,[array]){代码串}) 同some类似，但是只有所有元素都符合才返回true
+
+        变量：
+            使用var来声明一个或多个变量，声明变量的同时并赋值叫做初始化
+            任何数据类型和字符串类型数据做相加操作时，其他数据类型都会转变为字符串类型再做拼接
+            除字符串外的数据类型与数字类型运算时都会被转换成数字类型再做运算
+        强制数据类型转化：
+            Boolean() 转为布尔值
+            String() 转为字符串
+            Number() 转为数字类型
+            parseInt() 取整
+            parseFloat() 转换为浮点数
+            String()
+        一元运算符：只能操作一个值的运算符
+            a++ 先取a的值在进行加1操作
+            ++a 先进行+1操作再取a的值
+            a--/--a 同理
+        关系运算符：
+            全等：===   不全等：!==
+            只有值和类型都相等全等才成立，否则为不全等
+        逻辑运算符：
+            与运算：expression1 && expression2  两者都为真，返回true
+            或运算：expression1 || expression2  两者都为假，返回false
+            非运算：！expression
+            与运算的优先级高于或运算
+        三目运算符：
+            表达式1 ? 表达式2 : 表达式3
+            若表达式1为真，则解表达式2，否则解表达式3
+        if选择语句：
+            if(条件){
+                执行语句1;
+            }else if{
+                执行语句2;
+            }else if{
+                执行语句...;
+            }else{
+                执行语句n;
+            }
+        switch多分支语句：当分支较多时建议使用switch而不是if else
+            switch(表达式){
+                case 常量1:
+                    语句1;
+                    break;
+                case 常量2:
+                    语句2;
+                    break;
+                default:
+                    语句3;（上述都不成立执行此条语句）
+                    break;
+            }
+        while循环语句：
+            while(表达式){
+                循环语句;
+            }
+        do while循环： 区别：dowhile循环一定会至少执行一遍循环体
+            do{
+                循环语句;
+            }while(表达式);
+        for循环：
+            for(起始条件;终止条件;递进条件;){
+                循环语句;
+            }
+        函数：
+            function name(args){ //函数名可以省略，即匿名函数
+                表达式语句...
+            }
+            调用：
+                name(args);
+            当函数内未定义形参时，传入的参数就是不定长参数，他们存储在一个名为arguments的数组中
+            arguments.length 查看传入参数（数组）的长度
+        函数作用域：
+            外部声明的变量可以在一个函数内部被重新赋值；只有当函数内部重新通过var声明这个变量，就不会干涉到函数外部的这个变量
+        事件驱动函数：
+            与页面交互的行为称之为事件，比如鼠标的点击（onclick）、到某个区域（onmouseover、onmouseout）、文本框获取/失去焦点（onfocus、onblur）等
+            我们可以通过documents.getElementById找到符合条件的标签节点
+            然后我们可以用事件驱动函数，给当前的按钮绑定一系列的操作，完成用户交互
+        Math对象常用方法：
+            Math.PI 3.1415...
+            Math.random() 0~1之间的随机浮点数
+            Math.round(float) 四舍五入
+            Math.max() 返回最大的数 (居然不接收数组)
+            Math.min() 返回最小的数 (居然不接收数组)
+            Math.abs() 返回绝对值
+            Math.ceil() 向上取整
+            Math.floor() 向下取整
+            Math.pow(x,y) 求x的y次方
+            Math.sqrt(x) 求x的平方根
+            Math.sin()/cos()/tan() 参数为弧度
+        对象： 一种数据类型，一定程度上相当于python中的类
+            创建对象：var obj = new Object();  new可省略
+            创建对象法二：var obj = {};  js中{}即代表一个对象
+            obj.name = "asd"; 添加属性
+            obj.way = function(){ } 创建方法
+            删除属性/方法：delete obj.name/obj.way;
+        日期对象：
+            创建：var d = new Date(); 默认获取当前系统时间
+            格式化方法：
+                d.toDateString(); 日期转换为星期 月 日 年
+        其他常用函数：
+            setInterval(func,ms); 定时器，每隔ms毫秒，就调用一次func函数；返回定时器的id
+            clearInterval(id); 取消定时器，参数为定时器的id
+            obj.innerHTML  默认获取某标签间的所有内容，也可以为其赋值以替换某标签间的内容(标签对象可以通过getelementbyid获取)
+            window.onload  在页面加载结束后再调用函数
+        */
+        var arr = new Array(99,1,4,0,45,24);
+        arr.splice(2,1,6)
+        for(var i in arr){  // 遍历数组，注意这里的i不是数组中的元素，而是元素的下标
+            document.write(arr[i],"<br>");
+        }
+        var age = 18, name = "Tony", nn = NaN; //可以一次声明多个变量
+        if(10%2==0){
+            alert("这是一个偶数")
+        }else{
+            alert("这是一个奇数")
+        }
+        for(var i=1;i<=10;i++){
+            document.writeln(i)
+        }
+        alert(nn==NaN);  // false，一个操作数是NaN，则==返回false，!=返回true；NaN与自身不等
+        age = 20;
+        var isAdult = true;
+        alert(name+"'s age is "+age+"\n"+typeof(name)); //不同类型都会自动转换成字符串在拼接，typeof()方法类似type()方法
+        alert(isAdult+age); //无字符串，则都会自动转换为数字类型再拼接
+
+        function args(){
+            document.write("<hr>"+arguments.length)
+        }
+        args(10,25,-15);
+
+        window.onload = function(){  // window.onload函数的调用会在整个页面加载结束后再执行
+            document.getElementById("btn").onclick = function(){
+                alert("you clicked")
+            }
+        }
+
+        function bubbling_sort(arr){  // 冒泡排序
+            for(var i=0;i<arr.length;i++){
+                for(var j=0;j<arr.length-i-1;j++){
+                    if(arr[j]>arr[j+1]){
+                        var tmp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = tmp;
+                    }
+                }
+            }
+            return arr
+        }
+        function selection_sort(arr){  // 选择排序：第一个数和后面所有的数比较取出最小的，再第二个数和后面的数比较取出最小的
+            for(var i=0; i<arr.length-1; i++){
+                for(var j=i+1; j<arr.length; j++){
+                    if(arr[i]>arr[j]){
+                        var tmp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tmp;
+                    }
+                }
+            }
+            return arr
+        }
+        alert(selection_sort(arr));
+    </script>
+</head>
+<body>
+    ???<br>
+    <input type="button" value="按钮" id="btn">
+
+</body>
+</html>

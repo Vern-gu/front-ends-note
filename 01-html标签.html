@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>常见标签使用简介</title>
+    </head>
+    <body>
+        <h1>大标题h1标签，h1到h6依次减小</h1>
+        <center>居中 center标签</center>
+        <i>斜体i标签</i>
+        <p>段落p标签</p>
+        段落线hr标签👇
+        <hr>
+        <b>加粗b标签</b>
+        换行br标签<br>
+        <br>
+        <ul type="circle">
+            常规无序列表ul标签，type="disc/circle/square"属性改变列表前样式
+            <li>第一行列表项li标签</li>
+            <li>第二行列表项li标签</li>
+            <li>。。。</li>
+        </ul>
+        <a href="#" target="_blank">超链接a标签，添加target="_blank"属性可以使页面在新的标签页里打开</a>
+        <ol type="I">
+            有序列表ol标签，type="1/a/A/i/I"属性改变列表前样式
+            <li>第一行列表项li标签</li>
+            <li>第二行列表项li标签</li>
+            <li>。。。</li>
+        </ol>
+        <img src="E:\Picture\0Just\20200.jpg" width="100px" title="title属性表示鼠标放到图片上后出现的提示" alt="alt属性用来描述这张图片（图片加载失败）">
+        img标签用来添加图片，一般都要搭配src属性来添加图片路径,width属性可以设置图片的宽度大小，一般为等比缩放，px为单位表示像素，也可以直接填100%表示撑满整个窗口<br>
+        <hr>
+        <del>给文字添加删除线del标签</del><br>
+        给文字添加上标使用sup标签<sup>这是上标</sup><br>
+        <u>给文字添加下划线使用u标签</u>
+        <p>table标签用于编写一个表格，tr标签表示表格的行，td表示行中的某一列。table标签中有border属性表示边框。cellspacing表示单元格间隙
+            <table border="1px" cellspacing="0">
+                <tr>
+                    <td>第一行第一格</td><td>第一行第二格</td><td>第一行第三格</td>
+                </tr>
+                <tr>
+                    <td>第二行第一格</td><td>第二行第二格</td>
+                </tr>
+            </table>
+        </p>
+
+        <p>这是一个表单form标签，method属性表示如何提交表单数据（get/post方法），action属性表示表单数据所发往的地址
+            <form action="http://www.baidu.com/s" method="get" target="_blank"> 
+                <input type="text" name="wd" value="前往百度" title="百度一下，你就知道"><input type="submit" value="百度一下">
+                <input type="reset" value="重置">
+            </form>
+            <br>
+            label标签中for属性用来和input标签进行绑定，for属性的值必须和input标签中id属性一致。或者使用input标签嵌套于label标签中就不需要for属性绑定<br>
+            <label>用户：<input type="text" name="user"></label><br>
+            <label for="passwd">密码：</label>
+            <input type="password" name="password" id="passwd"><br>
+            <input type="button" value="这是一个没啥用的按钮">
+        </p>
+    </body>
+</html> 
+
