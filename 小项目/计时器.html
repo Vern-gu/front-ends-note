@@ -13,14 +13,14 @@
         }
     </style>
     <script>
-        var getid = function(id){
+        function getid(id){
             return document.getElementById(id);
         }
         var count=0, hour=0, minute=0, second=0;
         function counter(){
             count++;
             second = count % 60;
-            minute = Math.floor(count/60);
+            minute = Math.floor(count/60)%60;
             hour = Math.floor(count/3600);
             if(second<10){
                 second = "0"+second;
@@ -36,14 +36,20 @@
         var countID  = null
         window.onload = function(){
             getid("start").onclick = function(){
-                countID = setInterval(counter,1000);
+                if(countID){
+                    alert("start already");
+                }else{
+                    countID = setInterval(counter,1000);
+                }
             }
             getid("pause").onclick = function(){
                 clearInterval(countID);
+                countID = null;
             }
             getid("reset").onclick = function(){
                 clearInterval(countID);
                 count = 0;
+                countID = null;
                 getid("screen").innerHTML = "00:00:00";
             }
         }
