@@ -14,7 +14,7 @@
         js严格模式："use strict"处于哪个作用域，该作用域会对js语法更加严格，不建议用于全局
         */
         alert("hello world"); //在页面上弹出警告框，在js中每一条语句后加分号更加规范
-        document.write("hello world"); //在当前文本上输出内容
+        document.write("hello world<br>"); //在当前文本上输出内容
     </script>
     <script>
         /*
@@ -152,32 +152,88 @@
             格式化方法：
                 d.toDateString(); 日期转换为星期 月 日 年
         其他常用函数：
-            setInterval(func,ms); 定时器，每隔ms毫秒，就调用一次func函数；返回定时器的id
-            clearInterval(id); 取消定时器，参数为定时器的id
+            console.log(str);  控制台打印信息，常用于调试js代码
+            setInterval(func,ms); 定时器1，每隔ms毫秒，就调用一次func函数；返回定时器的1id
+            clearInterval(id); 取消定时器1，参数为定时器1的id
+            setTimeout(func,ms); 定时器2，经过ms毫秒后，执行func函数（只执行性一次）；返回定时器2id
+            clearTimeout(id); 取消定时器2
             obj.innerHTML  默认获取某标签间的所有内容，也可以为其赋值以替换某标签间的内容(标签对象可以通过getelementbyid获取)
             window.onload  在页面加载结束后再调用函数
+        js中正则语法：
+            字面量：用“//”包起来，例：var reg = /\d+/;
+            构造函数：var reg=new RegExp("\d+");
+            使用：
+                test方法：reg.test(str);  用于检测字符串中是否含有符合规则的子串，有返回true，否则返回false
+                match方法：str.match(reg); 在字符串中找出匹配的字符，有则返回数组，否则返回null
+                exec方法：reg.exec(str); 返回结果与match类似
+                search方法：str.search(reg)；用于查找符合规则的子串的位置，只返回第一个匹配的位置
+                其他：split()/replace() 方法中也能使用正则作为参数
+            修饰符：  g（全局匹配） i（忽略大小写）
+        
+        ES6语法补充：
+            let：用来声明变量，用法类似于var，但是声明的变量只在let命令所在的代码块内有效，且相同变量无法重复声明
+            const：用于声明常量，不能试图改变常量的值，其他语法类似let
+            解构赋值：var [a,b,c]=[1,2,3] | var {a,b}={a:1,b:2}
+            拼接字符串：``中可以直接拼接字符串和变量的值，例：`${name}的年龄为${age}`
+            箭头函数：var foo=(形参)=>{代码块}  与传统函数相比省略了function关键字
+            this指向：
+                1.在箭头函数中的this始终指向外部对象
+                2.setTimeout等计时函数中this指向window
+                3.在全局环境中this指向window
+                4.作为对象属性被调用时this指向对象
+                5.this在使用new构造的函数中时，指向new出来的新对象；不加new为普通函数调用指向外部对象
+                6.作为call/apply/bind方法被调用时指向传入的对象
+            set结构：var set = new Set([1,2,1,3,4]) 类似于python中集合，值不重复，传入的参数为数组
+                set转换为数组，可使用“...”扩展运算符，例：var arr=[...set]
+                set可以使用for of遍历，例：for(let i of set){} 其中i为set中的元素，而非索引
+                set.size; 获取集合的大小
+                set.has(10); 集合中是否有元素10，返回布尔值
+                set.add(10); 向集合中添加元素10，返回新的集合，无法添加重复元素
+                set.delete(10); 在集合中删除元素10，返回新的集合
+                set.clear(); 清空集合
+                set.keys();获取键 set.values();获取值 set.entries();获取键值对  集合中键值一般相等
+            map结构：var map = new Map([["name","Tom"],["age",12]]) 类似于python字典，传入参数为二维数组
+                map.size; 获取map大小
+                map.set("gender","male"); 向map中添加元素
+                map.has("key");
+                map.get("key");
+                map.delete("key");
+                map.clear();
+                map.keys();获取键 map.values();获取值 map.entries();获取键值对
+            生成器函数（generator）：定义时在function关键字后加“*” 类似于python中生成器，调用函数为obj.next()
+                在next()方法中可以传递参数，该参数将覆盖上一次yield所返回的值，相当于python中send()方法
+                function* generator(){ //斐波那契数列
+                    let [a,b]=[1,1];
+                    for(let i=1;i<10;i++){
+                        yield a;
+                        [a,b]=[b,a+b];
+                    }
+                }
+                var v=generator();
+                v.next();
+
         */
-        var arr = new Array(99,1,4,0,45,24);
-        arr.splice(2,1,6)
+        var arr = new Array(99,1,4,0,45,24); //创建数组
+        arr.splice(2,1,6)  // 将数组中第三格元素替换为6
         for(var i in arr){  // 遍历数组，注意这里的i不是数组中的元素，而是元素的下标
             document.write(arr[i],"<br>");
         }
         var age = 18, name = "Tony", nn = NaN; //可以一次声明多个变量
         if(10%2==0){
-            alert("这是一个偶数")
+            console.log("这是一个偶数")
         }else{
-            alert("这是一个奇数")
+            console.log("这是一个奇数")
         }
         for(var i=1;i<=10;i++){
             document.writeln(i)
         }
-        alert(nn==NaN);  // false，一个操作数是NaN，则==返回false，!=返回true；NaN与自身不等
+        console.log(nn==NaN);  // false，一个操作数是NaN，则==返回false，!=返回true；NaN与自身不等
         age = 20;
         var isAdult = true;
-        alert(name+"'s age is "+age+"\n"+typeof(name)); //不同类型都会自动转换成字符串在拼接，typeof()方法类似type()方法
-        alert(isAdult+age); //无字符串，则都会自动转换为数字类型再拼接
+        console.log(name+"'s age is "+age+"\n"+typeof(name)); //不同类型都会自动转换成字符串在拼接，typeof()方法类似type()方法
+        console.log(isAdult+age); //无字符串，则都会自动转换为数字类型再拼接
 
-        function args(){
+        function args(){  //函数不定义形参，传入的参数就是不定长参数，他们存储在一个名为arguments的数组中
             document.write("<hr>"+arguments.length)
         }
         args(10,25,-15);
@@ -212,7 +268,13 @@
             }
             return arr
         }
-        alert(selection_sort(arr));
+        console.log(selection_sort(arr));
+
+        var ss="cccabcdcbabcdd";
+        var reg = /ddd/; //创建正则
+        var flag = reg.test(ss);
+        var ret = ss.match(reg);
+        alert(ret)
     </script>
 </head>
 <body>

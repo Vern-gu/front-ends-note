@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie</title>
+    <script>
+        /*
+        cookie 是指缓存在本地客户端的数据
+        查询cookie：document.cookie
+        设置cookie：document.cookie="uname=abc" ，同名cookie会被覆盖，不同名可以叠加共存
+        删除cookie：将过期时间设置为以往的时间，会立即过期
+        */
+
+        function setCookie(name,value,expire){  //封装函数，设置cookie
+            var oDate = new Date();
+            oDate.setDate(oDate.getDate()+expire);
+            document.cookie=name+"="+value+";expires="+oDate; //设置cookie及过期时间
+        }
+        function getCookie(name){  //封装函数，获取cookie
+            var str = document.cookie;
+            var arr = str.split("; ");
+            for(var i=0;i<arr.length;i++){
+                var arr2 = arr[i].split("=");
+                if(arr2[0]==name){
+                    return arr2[1];
+                }
+            }
+        }
+        function removeCookie(name){ //封装函数，移除cookie
+            setCookie(name,1,-1); //将时间设置为立即过期即可
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -46,15 +46,26 @@
 
         <p>这是一个表单form标签，method属性表示如何提交表单数据（get/post方法），action属性表示表单数据所发往的地址
             <form action="http://www.baidu.com/s" method="get" target="_blank"> 
-                <input type="text" name="wd" value="前往百度" title="百度一下，你就知道"><input type="submit" value="百度一下">
-                <input type="reset" value="重置">
+                <input type="text" name="wd" placeholder="百度一下，你就知道" title="百度一下，你就知道"><input type="submit" value="百度一下">
+                <input type="reset" value="重置"> <br> 
+                text输入框中的placeholder属性可以为文本框填充默认字符串，文本框获取焦点时消失；<br>
+                value属性填充的文本则不会消失
             </form>
             <br>
             label标签中for属性用来和input标签进行绑定，for属性的值必须和input标签中id属性一致。或者使用input标签嵌套于label标签中就不需要for属性绑定<br>
             <label>用户：<input type="text" name="user"></label><br>
             <label for="passwd">密码：</label>
             <input type="password" name="password" id="passwd"><br>
-            <input type="button" value="这是一个没啥用的按钮">
+            <input type="button" value="按钮">
+        </p>
+        <p>
+            下拉列表
+            <select id="list" onchange="jump()">
+                <option value="http://wwww.baidu.com">百度</option>
+                <option value="http://www.sina.com.cn">新浪</option>
+                <option value="http://www.qq.com">腾讯</option>
+                <option value="http://www.sohu.com">搜狐</option>
+            </select>
         </p>
     </body>
 </html> 

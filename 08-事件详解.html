@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件</title>
+    <style>
+        #square{
+            height: 300px;
+            width: 400px;
+            background-color: blue;
+            text-align: center;
+            line-height: 300px;
+            font-size: 70px;
+            margin: auto;
+            color: silver;
+        }
+        #input{
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        /*px
+        js可以处理的事件类型为：鼠标事件、键盘事件、HTML事件
+        所有的事件处理函数都会有两部分组成，on+事件名称
+        鼠标事件：
+            onclick         鼠标单击操作
+            ondbclick       鼠标双击操作
+            onmouseover     鼠标移入
+            onmouseout      鼠标移出
+            onmousedown     鼠标按下
+            onmouseup       鼠标松开
+            onmousemove     鼠标移动
+        表单事件：
+            onfocus         输入框获取焦点（用于text/textarea/select下拉列表）
+            onblur          输入框失去焦点（用于text/textarea/select下拉列表）
+            onchange        输入框中的值改变（并失去焦点）（用于text/textarea/select下拉列表）
+            oninput         input输入框输入内容时
+            onselect        鼠标滑动选取input文本框中内容
+        键盘事件：一般在document对象下使用
+            onkeypress      按下按键直到松开（不包含键盘功能键）
+            onkeydown       按下按键
+            onkeyup         松开按键
+        编辑事件：
+            oncopy          复制内容时
+            oncut           剪切内容时
+            onpaste         黏贴内容时
+        页面相关事件：
+            window.onload   页面加载完成后
+            window.onresize 改变页面窗口大小时
+            document/window.oncontextmenu  右键菜单时
+
+        事件对象：
+            当触发某个事件时会产生一个事件对象，这个对象包含着所有与事件有关的信息。
+            在事件函数中会默认接受一个参数，该参数就是event对象
+            e.clientX/e.clientY 鼠标距离可视区域左边的距离/鼠标距离可视区域顶部的距离
+            e.pageX/e.pageY     鼠标距离页面左边的距离/鼠标距离页面顶部的距离
+            e.offsetX/e.offsetY 鼠标距离事件源左边距的距离/鼠标距离事件源上边距的距离
+        事件流：描述页面接受事件的顺序。捕获->目标->冒泡
+            当两个事件重叠时，他们都会被触发
+            target 事件属性可返回事件的目标节点（触发该事件的节点），如生成事件的元素、文档或窗口。
+        事件默认行为：例如a标签跳转、submit按钮提交等等
+            阻止默认行为方式：event.preventDefault(); event.returnValue=false; return false;
+        
+        DOM2级事件处理程序
+            添加事件监听器：addEventListener(事件名,处理函数,布尔值)  事件名不带on，默认false代表冒泡，true捕获
+            移除事件监听器：removeEventListener(事件名,处理函数)
+            IE下的事件监听器：attachEvent(事件名,处理函数)/detachEvent(事件名,处理函数) 
+        */
+        window.oncontextmenu=function(){
+            return false
+        }
+        document.onkeypress=function(){
+            console.log("window keypress");
+        } 
+        window.onload=function(){
+            document.body.oncopy=function(){
+                alert("版权所有，禁止复制！");
+                return false;  //返回false，表示阻止事件默认的复制行为
+            }
+        }
+        function press(e){
+            var evt = e || event; //获取事件对象的兼容写法
+            console.log('submit keypress');
+            evt.cancelBubble=true; //阻止冒泡
+        }
+    </script>
+</head>
+<body>
+    <div id="square" onclick="console.log(event)">
+        style
+    </div>
+    <div id="input">
+        <input type="text" onchange="alert('文本框内容改变')">
+        <input type="submit" onkeypress="press()" value="submit">
+    </div>
+
+
+</body>
+</html>

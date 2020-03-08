@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+    <!-- BOM(Browser object model)浏览器对象模型 -->
+    <script>
+        /*
+        通过window对象来控制BOM，window对象下的函数都可省略window
+            alert(str); 系统警告框
+            confirm(str); 弹出一个带有确定和取消的警告框
+                确定按钮返回true，取消按钮返回false
+            prompt(content, default); 弹出一个带输入框的提示框(内容，默认值)
+                确定按钮返回输入的内容，取消按钮返回null
+            open(url,[title,str]); 打开一个新窗口
+                url: 要加载的地址  title：窗口名  str：窗口参数，可以设置长宽高低
+                返回一个window对象
+            opener 存储了当前窗口父窗口的window对象
+            location对象 代表浏览器地址栏输入框中的url
+                location.assign(url); 跳转到指定的url，可以跳转回原来页面
+                location.reload(); 重载当前的url，传入参数true后，为强制刷新
+                location.replace(url); 用新url替换当前url，无法回到先前页面
+            history  window对象的属性，保存当前窗口访问url的记录
+                history.length 返回当前history对象中的记录数
+                history.back(); 返回上一个页面
+                history.forward(); 前进到下一个页面
+                history.go(); 参数为0 刷新页面；参数为正数 前进对应数量的页面；参数为负数 后退对应数量的页面
+        */
+    </script>
+</head>
+<body>
+    <input type="button" value="按钮" onclick="open('http://www.baidu.com','window','_present')">
+</body>
+</html>

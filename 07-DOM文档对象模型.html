@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<script>
+    /*
+    DOM(Document Object Model)定义了访问HTML和XML文档的标准，它允许程序和脚本动态地访问和更新文档的内容、结构和样式
+    DOM中节点一共分为三类：元素节点（标签）、属性节点（标签内元素）、文本节点（标签之间显示的文本）
+        节点类型    nodeName    nodeType    nodeValue
+          元素      元素名称        1          null
+          属性      属性名称        2         属性值
+          文本       #text          3        文本内容
+
+    获取元素节点(标签):
+        var obj = document.getElementbyId(id);  通过元素节点的id来获取对应元素节点(标签)
+        document.getElementsByTagName(tagname);  获取当前页面上所有该tagname的元素节点,返回一个数组
+            node.getElementsByTagName(tagename);  在node节点下查找符合条件的节点
+        document.getElementsByName(name);  获取页面上name属性符合条件的元素节点,返回数组
+            name属性一般只有文本输入框元素节点才有,因此不支持node.getEle....
+        document/node.getElementsByClassName(classname);  查找符合条件的元素节点,返回数组
+    元素节点属性:
+        obj.tagName;  获取元素节点标签名
+        obj.innerHTML;  获取元素节点标签间的所有内容
+        obj.innerText="文本"; 直接为标签赋值文本节点  
+        操作当前某元素节点中某个属性:
+            set/getAttribute(); 设置/获取某元素节点属性;也可直接通过赋值来设置
+            removeAttribte(); 删除某元素节点属性
+        obj.childNodes; 获取当前元素节点的所有子节点(包括元素节点和文本节点)
+        obj.firstChild; 快速找到当前元素节点的第一个子节点
+        obj.lastChild;  快速找到当前元素节点的最后一个子节点
+        obj.parentNode; 返回当前节点的父节点
+        obj.previousSibling; 返回该节点的前一个同级节点
+        obj.nextSibling; 返回该节点的后一个同级节点
+        obj.attribute; 返回该节点的属性节点集合（无序，不重复）
+    获取当前有效样式:
+        通过obj.style.属性 只能获取到行间样式,对于外部样式是获取不到的
+        getComputedStyle(元素节点)["样式类型"] 可获取到生效的外部样式(ie不支持)
+    节点操作：
+        document.write(); 将任意字符串插入到文档中，但是会将页面上原有的内容覆盖掉
+        document.createElement(标签名); 创建一个元素节点
+        parent.appendChild(newnode); 将一个新的节点插入到parent子节点的末尾
+        document.createTextNode(文本); 创建一个文本节点
+        parent.insertBefore(newnode, oldnode); 将新节点插入到某个节点之前
+        parent.replaceChild(newnode,oldnode); 将oldnode替换为newnode
+        node.cloneNode(false); 克隆一个节点，返回新克隆出来的节点对象。参数为true时会一并克隆标签中的文本内容
+        parent.removeChild(node); 删除该节点
+    */
+</script>
+<body>
+    
+</body>
+</html>
