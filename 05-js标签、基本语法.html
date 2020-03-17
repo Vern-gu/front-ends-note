@@ -125,6 +125,9 @@
             arguments.length 查看传入参数（数组）的长度
         函数作用域：
             外部声明的变量可以在一个函数内部被重新赋值；只有当函数内部重新通过var声明这个变量，就不会干涉到函数外部的这个变量
+        立即执行函数：
+            声明一个函数，并马上调用这个匿名函数就叫做立即执行函数；也可以说立即执行函数是一种语法，让你的函数在定义以后立即执行
+            语法：(function () {code})()
         事件驱动函数：
             与页面交互的行为称之为事件，比如鼠标的点击（onclick）、到某个区域（onmouseover、onmouseout）、文本框获取/失去焦点（onfocus、onblur）等
             我们可以通过documents.getElementById找到符合条件的标签节点
@@ -211,7 +214,25 @@
                 }
                 var v=generator();
                 v.next();
-
+            类（面向对象）：
+                class Person{  // 类中的函数都不需要function关键字
+                    constructor(uname,age) { // 此方法是类的构造函数（默认方法），用于传递参数，返回实例对象
+                        this.uname = uname;  // this指向创建的实例
+                        this.age = age;
+                    }
+                    sayHello() {
+                        console.log(`我是${this.uname}，今年${this.age}岁！`);
+                    }
+                }
+                var xl = new Person("小李",28); 创建实例必须使用new，并且创建时自动调用construction()
+                继承：
+                    class Tom extends Person {
+                        constructor(name,age) {
+                            super(name,age); 
+                        }
+                    }
+                    var tom = new Tom("汤姆",18);
+                    tom.sayHello();
         */
         var arr = new Array(99,1,4,0,45,24); //创建数组
         arr.splice(2,1,6)  // 将数组中第三格元素替换为6

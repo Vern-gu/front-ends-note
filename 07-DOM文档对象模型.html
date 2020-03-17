@@ -21,6 +21,8 @@
         document.getElementsByName(name);  获取页面上name属性符合条件的元素节点,返回数组
             name属性一般只有文本输入框元素节点才有,因此不支持node.getEle....
         document/node.getElementsByClassName(classname);  查找符合条件的元素节点,返回数组
+        document.querySelector(选择器); 返回文档中匹配指定 CSS 选择器的一个元素，多个css选择器用逗号隔开
+            如果需要返回所有的元素，使用 querySelectorAll() 方法替代
     元素节点属性:
         obj.tagName;  获取元素节点标签名
         obj.innerHTML;  获取元素节点标签间的所有内容
@@ -36,8 +38,8 @@
         obj.nextSibling; 返回该节点的后一个同级节点
         obj.attribute; 返回该节点的属性节点集合（无序，不重复）
     获取当前有效样式:
-        通过obj.style.属性 只能获取到行间样式,对于外部样式是获取不到的
-        getComputedStyle(元素节点)["样式类型"] 可获取到生效的外部样式(ie不支持)
+        通过obj.style.属性 只能获取到行间样式,对于外部样式是获取不到的，也能为该属性赋值改变样式
+        window.getComputedStyle(元素节点).["样式类型"] 可获取到生效的外部样式(ie不支持)
     节点操作：
         document.write(); 将任意字符串插入到文档中，但是会将页面上原有的内容覆盖掉
         document.createElement(标签名); 创建一个元素节点

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js_animation</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            color: blanchedalmond;
+            line-height: 40px;
+            text-align: center;
+        }
+        input {
+            position: absolute;
+            left: 10px;
+            top: 110px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">输入数字来移动方块</div>
+    <input type="text">  
+    <input type="submit" style="left: 190px;">
+    <!-- 获取文本框中的值以改变黑框的位置 -->
+    <script>
+        var speedX = 1;
+        var div_box = document.getElementById("box");
+        var input = document.getElementsByTagName("input")[0];
+        var submit = document.getElementsByTagName("input")[1];
+        var timer;
+
+        function move(distance) {
+            var currentX = parseInt(getComputedStyle(div_box).left);//.left获取到的是一个“xxxpx”的字符串需要转为数字
+            var currentY = parseInt(getComputedStyle(div_box).top);
+            var left;
+            if(currentX == distance){
+                clearInterval(timer);
+            }else if(currentX < distance){
+                left = currentX+speedX;
+                div_box.style.left = left + 'px';
+            }else{
+                left = currentX-speedX;
+                div_box.style.left = left + 'px';
+            }
+        }
+        submit.onclick= function() {
+            var vl=input.value;
+            timer = setInterval(function(){move(vl)},1);
+        }
+        
+    </script>
+</body>
+</html>
