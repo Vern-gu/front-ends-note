@@ -4,30 +4,22 @@
     <meta charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>test</title>
+    <script src="./jquery-3.4.1.min.js"></script>
     <script>
-        class Person{  // 类中的函数都不需要function关键字
-            constructor(uname,age) { // 此方法是类的构造函数（默认方法），用于传递参数，返回实例对象
-                this.uname = uname;  // this指向创建的实例
-                this.age = age;
-            }
-            sayHello() {
-                console.log(`我是${this.uname}，今年${this.age}岁！`);
-            }
-        }
-        var xl = new Person("小李",28); 
-        xl.sayHello();
-
-        class Tom extends Person {
-            constructor(name,age) {
-                super(name,age); 
-            }
-        }
-        var tom = new Tom("汤姆",18);
-        tom.sayHello();
+        $(function(){
+            $('ul').on('click','li',function(){
+                console.log($(this).text());
+            });
+        })
     </script>
 </head>
 
 <body>
-    
+    <ul>
+        <li><a href="javascript:console.log('asd')">one</a></li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+    </ul>
 </body>
 </html>

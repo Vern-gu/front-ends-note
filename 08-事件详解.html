@@ -63,7 +63,7 @@
             target 事件属性可返回事件的目标节点（触发该事件的节点），如生成事件的元素、文档或窗口。
         事件默认行为：例如a标签跳转、submit按钮提交等等
             阻止默认行为方式：event.preventDefault(); event.returnValue=false; return false;
-        
+            阻止冒泡：event.stopPropagation()
         DOM2级事件处理程序
             添加事件监听器：addEventListener(事件名,处理函数,布尔值)  事件名不带on，默认false代表冒泡，true捕获
             移除事件监听器：removeEventListener(事件名,处理函数)
@@ -85,6 +85,7 @@
             var evt = e || event; //获取事件对象的兼容写法
             console.log('submit keypress');
             evt.cancelBubble=true; //阻止冒泡
+        
         }
     </script>
 </head>

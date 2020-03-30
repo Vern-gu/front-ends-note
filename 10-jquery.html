@@ -3,9 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>jQuery 使用</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: black;
+        }
+        .current {
+            background-color: burlywood;
+        }
+    </style>
 </head>
 <body>
-    
+    <div></div>
+    <input type="checkbox">
+    <script>
+        // 1. jquery入口函数，等待页面加载完毕后执行，相当于DOMContentLoaded
+        // $(document).ready(function(){
+        //     $('div').click(function() {
+        //          $(this).hide()
+        //     })
+        // })
+        // $(function(){
+        //     $('div').css("backgroundColor","green"); //通过jq选择器获得元素节点并改变其样式
+        // })
+
+        // 2. $()函数就是jQuery()函数的简写。$是jquery的顶级对象，相当于原生js中的window对象
+        // 将元素用$()包起来，就成了jQuery对象，可以调用jQuery方法
+        // jquery对象以伪数组形式储存，$('div')[index] 将jquery对象转换为dom对象
+
+
+        // 3. jquery选择器。返回所有匹配的元素节点。
+        // 为多个节点进行操作时采用隐式迭代，不需要用户遍历每个元素
+        // $('选择器')     类似于document.querySelector('选择器')
+
+        // 4. jquery可以用css方法来修改简单元素样式；也可以操作类，修改多个样式
+        // $(this).css("color")  css()方法中只填写属性名则获取属性值
+        // $(this).css("width","300px") css()方法中两个参数则会修改相应属性的值
+        // $(this).css({height:100,backgroundColor:"blue"}) 同时修改多个属性的值可以采用对象的方式，对象中属性名可以不加引号
+
+        // 5. 设置类样式方法。将多个样式直接写入一个css的类中，为某个标签节点添加样式时直接将类加入到标签中即可
+        // $("div").addClass("类名") 为div标签追加一个类，不影响已有的类
+        // $('div').removeClass("类名") 删除类。原生js中className会覆盖元素中原有的类
+        // $('div').toggleClass("类名") 切换类。如果有这个类就删除，没有就添加
+
+        // 6. jquery动画效果。必须是元素才能做动画，不能是document
+        // show([speed],[easing],[fn])/hide()/toggle() 显示，隐藏，切换。speed：slow/normal/fast||easing：swing/linear||fn：回调函数
+        // slideDown([speed],[easing],[fn])/slideUp()/slideToggle() 下拉显示/上拉隐藏/切换
+        // fadeIn([speed],[easing],[fn])/fadeOut()/fadetoggle()/fadeTo(speed,opacity) 淡入/淡出/切换/修改透明度(速度和透明度参数必写)
+        // hover([over],out) 事件切换，即鼠标经过和离开的复合写法。over：鼠标移到元素上要触发的函数（相当于mouseenter）||out：鼠标移出元素要出发的函数（相当于mouseleave）||若只有一个函数作为参数，则鼠标经过和离开都会出发该函数
+        // animate(params,[speed],[easing],[fn]) 自定义动画。params：要更改的样式属性，以对象形式传递
+
+        // 7. jquery属性操作。
+        // $('a').prop("href") 获取元素节点本身自带的属性值。获取<a>标签中的href属性值。prop()中第二个参数可以为该属性赋值
+        // $('div').attr("index") 获取元素的自定义属性值。获取<div>标签中index属性值。赋值同上
+        // $('span').data('uname','Tom') 为元素添加属性和值，该属性存于内存中，因此DOM中不会显示。获取元素值同上
+
+        // 8. jquery内容文本值。主要针对元素的内容以及表单的值操作
+        // $('div').html() 获取元素节点中的所有内容，html('content') 改变内容。相当于原生innerHTML
+        // $('div').text() 获取元素节点中的文本内容，改变内容同上。相当于原生innerText
+        // $('input').val() 获取表单中的值，改变内容同上。相当于原生value
+
+        // 9. jquery元素操作。遍历、创建、添加、删除
+        // jquery中隐式迭代是对同一类元素做同样的操作，如果是做不同操作时就需要遍历
+        // $('div').each(function(index,domEle){xxx;}) 遍历，index为索引号，domEle为DOM元素对象，需要用$()转换为jq对象才能使用jquery方法。
+        // $.each($('div'),function(index,domEle){xxx;}) 可遍历任何对象（主要用于遍历数据，处理数据），参数同上
+        // 创建元素：var li = $("<li>后创建的div</li>") 类似于原生createElement
+        // 元素内部添加子元素：$("ul").append(li) 新的元素在最后，类似于原生appendChild。prepend()可将添加的元素放在最前面
+        // 外部添加元素：$('p').after(li)/before(li) 将新的li标签放在p标签后/前
+        // 删除匹配的节点：$('ul').remove() 将ul标签整个删除
+        // 删除匹配节点的子节点：$('ul').empty() 将ul标签内的所有子节点删除，等价于$('ul').html("")
+
+        // 10. jquery尺寸操作：width/innerWidth/outerWidth
+        // jquery位置操作：
+        // 设置或获取元素偏移：$('.son').offset() 返回的是被选元素相对于文档的偏移坐标，与父级无关。方法中传入对象{"top":100,"left":100}以修改偏移
+        // $('son').position() 返回被选元素相对于带有定位的父级偏移坐标，如果父级没有定位，则以文档为主。该方法不能设置偏移
+        // scrollTop()/scrollLeft() 设置或获取元素被卷去的头部和左侧
+        
+        // 11. jquery事件注册
+        // 单个事件注册：$('div').click(function(){xxx; }) （mouseover/mouseout/blur/focus/change/keydown/keyup/resize/scroll）
+        // 在匹配元素上绑定一个或多个事件处理函数：element.on(events,[selector],fn) events：事件，多个事件空格分隔，也可采用对象的方式||selector：子元素选择器，可实现事件委派，能给动态创建的元素绑定事件||fn：回调函数
+        // $('div').on({ // 一个对象绑定多个事件处理不同情况
+        //     mouseover:function(){
+        //         $(this).css("background","skyblue");
+        //     },
+        //     click:function(){
+        //         $(this).css('background','purple');
+        //     },
+        //     mouseout:function(){
+        //         $(this).css("background","green");
+        //     },
+        // })
+        $('div').on("mouseenter mouseleave", function(){ // 一个对象绑定多个事件处理相同情况
+            $(this).toggleClass("current");
+        })
+        // 事件解绑：$('ul').off('click','li'); off()方法为空时解绑所有事件，'li'为事件委托解绑
+        // one() 方法可使事件只触发一次（一次性）
+        
+        // 12. 自动触发事件（例如网页轮播图）
+        // element.click() 简写形式，打开页面后会自动触发点击事件，无需鼠标操作
+        // element.trigger("event") 自动触发模式
+        // element.triggerHandler("event") 该模式与前两者的区别为：不会触发元素的默认行为
+        
+        // 13. jquery事件对象：事件被触发，就会有事件对象产生
+        // 注册事件时的回调函数所接受的一个默认参数就是事件对象
+        // $('div').on("click",function(event){console.log(event); })
+        // 通过事件对象可以阻止元素默认行为（event.preventDefault()或者return false）、阻止冒泡（event.stopPropagation()）与原生js相同
+
+        // 14. jquery拷贝对象。将某个对象拷贝（合并）给另一个对象使用
+        // $.extend([deep],target,object1[,objectN]) deep：true为深拷贝，默认为false浅拷贝||target：拷贝的目标||object：拷贝源
+
+        // 15. jquery多库共存问题。jquery使用$作为标识，而其他js库也有可能使用$作为标识符，一起使用时就会引起冲突
+        // 解决方案1：在jquery中使用jQuery替代$，例如：jQuery('div').show();
+        // 解决方案2：用户自定义jquery的标识符，例如：var signal = $.noConflict(); signal('div').show();
+
+        // 16. jquery插件：基于jquery来实现更加高级的功能
+        // 两个jquery插件网站：http://www.jq22.com/   http://www.htmleaf.com/ 
+        // 瀑布流、图片懒加载、全屏滚动插件
+        // bootstrap组件
+    </script>
+
 </body>
-</html>
+</html> 

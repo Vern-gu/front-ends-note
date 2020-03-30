@@ -21,6 +21,7 @@
         js中数据类型分为两大类：
             1.基本数据类型
                 数字 Number 
+                    NumberObject.toFixed(num) 把 Number 四舍五入为指定小数位数的数字
                 字符串 String  不可变类型
                     获取字符串中的某个字符：str.charAt(index)/str[index]
                     获取字符串中某个字符对应的ASCII码：str.charCodeAt(index)
@@ -162,6 +163,9 @@
             clearTimeout(id); 取消定时器2
             obj.innerHTML  默认获取某标签间的所有内容，也可以为其赋值以替换某标签间的内容(标签对象可以通过getelementbyid获取)
             window.onload  在页面加载结束后再调用函数
+            localStorage.setItem/getItem("key",value) 添加本地存储，只能存储字符串格式数据，因此可使用json
+                将js对象转换为json字符串 JSON.stringify()
+                JSON.parse() 将json字符串转换为js对象
         js中正则语法：
             字面量：用“//”包起来，例：var reg = /\d+/;
             构造函数：var reg=new RegExp("\d+");
