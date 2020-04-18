@@ -42,7 +42,7 @@
                     使用new来创建，或者直接用[]创建同python
                     数组末尾添加元素：arr.push(obj) 返回值为添加完元素后数组的长度
                     移除数组最末尾的元素：arr.pop() 返回值为移除的元素
-                    移除数组中第一格元素：arr.shift() 返回值为溢移除的元素
+                    移除数组中第一个元素：arr.shift() 返回值为移除的元素
                     数组头部添加元素：arr.unshift(obj) 返回值为添加完元素后数组的长度
                     合并两个数组：arr1.concat(arr2) 返回合并后的新数组，原数组不会被改变
                     数组切片：arr.slice(start,end) 返回切片后的新数组，左闭右开
@@ -157,15 +157,12 @@
                 d.toDateString(); 日期转换为星期 月 日 年
         其他常用函数：
             console.log(str);  控制台打印信息，常用于调试js代码
-            setInterval(func,ms); 定时器1，每隔ms毫秒，就调用一次func函数；返回定时器的1id
+            setInterval(func,ms); 定时器1，每隔ms毫秒，就调用一次func函数；返回定时器1的id
             clearInterval(id); 取消定时器1，参数为定时器1的id
-            setTimeout(func,ms); 定时器2，经过ms毫秒后，执行func函数（只执行性一次）；返回定时器2id
+            setTimeout(func,ms); 定时器2，经过ms毫秒后，执行func函数（只执行性一次）；返回定时器2的id
             clearTimeout(id); 取消定时器2
             obj.innerHTML  默认获取某标签间的所有内容，也可以为其赋值以替换某标签间的内容(标签对象可以通过getelementbyid获取)
             window.onload  在页面加载结束后再调用函数
-            localStorage.setItem/getItem("key",value) 添加本地存储，只能存储字符串格式数据，因此可使用json
-                将js对象转换为json字符串 JSON.stringify()
-                JSON.parse() 将json字符串转换为js对象
         js中正则语法：
             字面量：用“//”包起来，例：var reg = /\d+/;
             构造函数：var reg=new RegExp("\d+");

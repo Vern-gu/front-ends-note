@@ -40,9 +40,14 @@
     获取当前有效样式:
         通过obj.style.属性 只能获取到行间样式,对于外部样式是获取不到的，也能为该属性赋值改变样式
         window.getComputedStyle(元素节点).["样式类型"] 可获取到生效的外部样式(ie不支持)
+
+        document.querySelector("li").classList.add("red")
+            classList：获取当前元素的所有样式列表-数组 classList.item[n]获取到样式的值
+            add/remove/toggle：为元素添加/移除指定名称的样式，一次只能添加/移除一个样式，不会移除class属性只删除样式
+
     节点操作：
         document.write(); 将任意字符串插入到文档中，但是会将页面上原有的内容覆盖掉
-        document.createElement(标签名); 创建一个元素节点
+        document.createElement(标签名); 创建一个元素节点，默认创建的标签都是行级元素，需要手动切换为块级元素
         parent.appendChild(newnode); 将一个新的节点插入到parent子节点的末尾
         document.createTextNode(文本); 创建一个文本节点
         parent.insertBefore(newnode, oldnode); 将新节点插入到某个节点之前

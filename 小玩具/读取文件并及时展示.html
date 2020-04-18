@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" >
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="file">
+    </form>
+    <img src="" alt="" style="width: 300px;">
+    <script>
+        var reader = new FileReader();
+        var file = document.querySelector("input[type=file]");
+        file.onchange = ()=>{
+            reader.readAsDataURL(file.files[0]);
+            reader.onload = () =>{ // 当文件读取成功后触发
+                var res = reader.result;
+                var img = document.querySelector("img");
+                img.src=res;
+            }
+        }
+
+    </script>
+</body>
+</html>

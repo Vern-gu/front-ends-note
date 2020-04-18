@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue基础</title>
+    <style>
+        body {
+            margin:1px;
+        }
+        .one{
+            background-color: burlywood;
+            border: 5px solid blue;
+            margin: 0px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // vue是一个js框架，主要可以简化DOM操作，响应式数据驱动
+        window.onload = function(){
+            var app = new Vue({   // 声明式渲染
+                el:"#app", //设置挂载点
+                methods:{
+                    doIt:function(){
+                        alert(this.resume.name+' '+this.resume.age);
+                        this.isShow = false;
+                    },
+                    toggleHighlight:function(){
+                        this.isActive = !this.isActive;
+                    },
+                    showMessage:function(){
+                        alert(this.message);
+                    }
+                },
+                data:{
+                    isActive:false,
+                    isShow:true,
+                    message:"awsome",
+                    resume:{
+                        name:"vern",
+                        age:"16",
+                    },
+                    info:"<a href='http://wenjie.tech/'> alab </a>",
+                }
+            })
+        }
+        // vue指令：
+        //  v-text：设置标签的文本值，标签中的内容都会被替换,innerText
+        //  v-html：设置标签的innerHtml，可以解析html结构文本
+        //  v-on：绑定事件,<input type="button" v-on:click="function">，其中v-on:click可以替换为@click
+        //      function中可以传递自定义参数，绑定的事件可添加事件修饰符@keydown.enter="function" 
+        //  v-show：根据表达值的真假切换元素的显示和隐藏(操纵样式)，后面的表达式最终都会解析为布尔值
+        //  v-if：根据表达之真假切换元素的显示和隐藏（操纵DOM元素），如果需要频繁切换显示，则建议使用v-show
+        //  v-bind：设置元素的属性，<img v-bind:src="imgSrc" v-bind:title="imgTitle"> ,其中v-bind:src可省略为:src
+        //  v-for：根据数据生成列表结构，<li v-for="(item,index) in arr"> arr与data中的数据名相对应，in为关键字
+        //  v-model：获取和设置表单元素的值（双向数据绑定，表单中的值也会更改data中的数据）
+
+        // axios：基于ajax的网络请求库，在axios回调函数中this指向会改变，因此在函数外需要额外保存一份this
+        //  get请求：axios.get(url?key=value&key2=value2).then(function(response){},function(err){})
+        //  post请求：axios.post(url,{key:value,key2:value2}).then(function(response){},function(err){})
+    </script>
+</head>
+<body>
+    <!--
+        <div :class="isActive?'one':''" id="app" > 效果一样
+    -->
+    <div :class={one:isActive} id="app" v-show="isShow">
+        <!--字符串拼接-->
+        {{"welcome to "+message}} 
+        <p v-text="'name: '+resume.name">hello</p>
+        <p v-text="'age: '+resume.age"></p>
+        <p v-html="info"></p>
+        <input type="button" value="切换高亮" @click="toggleHighlight">
+        <br>
+        <input type="text" v-model="message" @keydown.enter="showMessage">
+        <input type="button" value="确定" @click="doIt">
+    </div>
+
+</body>
+</html>

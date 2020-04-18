@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 监听网络是否连接：window.ononline/onoffline
+
+        // 元素全屏操作：不同浏览器需要添加不同前缀，chrome为webkit，火狐为moz，ie为ms
+        //      开启全屏显示：element.requestFullScreen()
+        //      取消全屏显示：document.cancelFullScreen()  
+        //      是否为全屏状态(属性)：document.fullScreenElement  
+
+        // 读取文件内容：需要创建FileReader()对象，以下方法无返回值，但是读取完文件后会将读取的结果存储在FileReader对象的result中
+        //      reader.readAsText()：读取文本文件，返回文本字符串，默认编码为utf-8
+        //      reader.readAsBinaryString()：可读取任意文件类型，返回二进制字符串，主要用于服务端存储
+        //      reader.readAsDataURL()：读取文件获取一段以data开头的字符串。dataURL是将资源转换为base64编码的字符串，并将这些内容直接存储与url中，用于优化网页的加载速度
+        //      reader.abort()：中断读取
+
+        // 拖拽接口：对于需要实现拖拽的元素可以添加draggable="true"属性，图片与链接默认是可拖拽的
+        // 可通过事件参数中的dataTransfer来实现数据的存储和获取（setDate/getDate(format,data)）
+        //      format：数据类型，"text/html" "text/uri-list" | data：一般为字符串
+        //      通过dataTransfer存储的数据只能在drop事件中获取
+
+        // localStorage/sessionStorage.setItem/getItem("key",value) 添加本地存储，只能存储字符串格式数据，因此可使用json
+        //      removeItem("key") 通过指定名称key删除对应的值
+        //      clear() 删除所有的存储内容
+        //      将js对象转换为json字符串 JSON.stringify()
+        //      JSON.parse() 将json字符串转换为js对象
+        //      通过session存储的数据仅保存在当前页面的内存中；而通过localstorage存储的数据会一直保存在浏览器中（不同浏览器不共享数据）
+
+        // 通过创建cache manifest文件来配置需要缓存的文件，一般都使用.appcache作为拓展名
+        //      如需启用，则应在html标签中添加manifest属性
+        //      <html manifest="demo.appcache">
+    </script>
+</body>
+</html>
